@@ -35,7 +35,7 @@ const Header = (props) => {
           className={classes.iconStyles}
           elevation={0}
           square
-          />
+        />
       </Toolbar>
     </AppBar>
   );
