@@ -54,9 +54,6 @@ const useStyles = makeStyles({
 
 const CardsDetail = ({ cardTarget }) => {
   const classes = useStyles();
-  const pendulumConverter = (cardEffect) => {
-    return
-  }
   return (
     <>
       <Paper className={classes.cardDetailWrapperStyles}>
