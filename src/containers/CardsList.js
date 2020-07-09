@@ -9,6 +9,9 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { get } from '../utils/ApiCaller';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import banSign from '../assets/images/banSign.png';
+import limitedSign from '../assets/images/limitedSign.png';
+import semilimitedSign from '../assets/images/semilimitedSign.png';
 
 const useStyles = makeStyles({
   cardsListWrapperStyles: {
@@ -18,15 +21,9 @@ const useStyles = makeStyles({
     backgroundColor: 'transparent',
     overflow: 'hidden',
   },
-  cardWrapperStyles: {
-    width: '96px',
-    height: '140px',
-    marginBottom: '7px',
-    marginTop: '7px'
-  },
   cardStyles: {
-    width: '96px',
-    height: '140px',
+    width: '103px',
+    height: '150px',
     marginRight: '0',
     '&:hover': {
       cursor: 'pointer',
@@ -43,25 +40,20 @@ const useStyles = makeStyles({
     backgroundColor: 'transparent',
     overflow: 'hidden',
   },
+  cardWrapperStyles: {
+    width: '103px',
+    height: '150px',
+    marginBottom: '20px',
+    marginTop: '20px'
+  },
+  banListStyles: {
+    width: '36px',
+  },
   infiniteScroll: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
-    '&::-webkit-scrollbar': {
-      width: '8px',
-      backgroundColor: 'transparent',
-    },
-    '&::-webkit-scrollbar-track': {
-      WebkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.5)',
-      boxShadow: 'inset 0 0 6px rgba(0,0,0,0.5)',
-      borderRadius: '10px',
-    },
-    '&::-webkit-scrollbar-thumb': {
-      minHeight: '48px',
-      borderRadius: '10px',
-      backgroundImage: '-webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122, 153, 217)), color-stop(0.72, rgb(73, 125, 189)), color-stop(0.86, rgb(28, 58, 148)))',
-    },
   },
   circularProgress: {
     justifySelf: 'center',
@@ -80,7 +72,7 @@ const CardsList = (props) => {
   const classes = useStyles();
   const [cardsList, setCardsList] = useState([]);
   const [dataStatus, setDataStatus] = useState({});
-  const length = 100;
+  const length = 40;
   const moreCardsFetching = async () => {
     try {
       const response = await get(dataStatus.next_page);
@@ -97,42 +89,100 @@ const CardsList = (props) => {
       </Paper>
     )
   }
-  const cardsFetching = async () => {
-    try {
-      const response = await get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=${length}&offset=0`);
-      setDataStatus(response.data.meta);
-      setCardsList(response.data.data);
-    } catch (ex) {
-      console.log('Fetch cards error!');
-    }
+  const banListSignConverter = (ban_tcg) => {
+    if (ban_tcg === "Banned")
+      return banSign;
+    else if (ban_tcg === "Limited")
+      return limitedSign;
+    else return semilimitedSign;
   }
   useEffect(() => {
+    const apiRequestConverter = () => {
+      let temp = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?';
+      if (props.cardsFilterName !== "")
+        temp += '&fname=' + props.cardsFilterName.replace(" ", "%20");
+      if (props.cardsFilterType !== "")
+        temp += '&type=' + props.cardsFilterType.replace(" ", "%20");
+      if (props.cardsFilterRace !== "")
+        temp += '&race=' + props.cardsFilterRace.replace(" ", "%20");
+      if (props.cardsFilterAttribute !== "")
+        temp += '&attribute=' + props.cardsFilterAttribute;
+      if (props.cardsFilterLevelRank !== "")
+        temp += '&level=' + props.cardsFilterLevelRankCompare + props.cardsFilterLevelRank;
+      if (props.cardsFilterLink !== "")
+        temp += '&link=' + props.cardsFilterLink;
+      if (props.cardsFilterAtk !== "")
+        temp += '&atk=' + props.cardsFilterAtkCompare + props.cardsFilterAtk;
+      if (props.cardsFilterDef !== "")
+        temp += '&def=' + props.cardsFilterDefCompare + props.cardsFilterDef;
+      if (props.cardsFilterSort !== "")
+        temp += '&sort=' + props.cardsFilterSort;
+      temp += `&num=${length}&offset=0`;
+      console.log(temp);
+      return temp;
+    }
+    const cardsFetching = async () => {
+      try {
+        const response = await get(apiRequestConverter());
+        setDataStatus(response.data.meta);
+        setCardsList(response.data.data);
+      } catch (ex) {
+        setCardsList([]);
+        setDataStatus({ rows_remaining: 0 });
+      }
+    }
     cardsFetching();
-  }, []);
+  }, [
+    props.cardsFilterName,
+    props.cardsFilterType,
+    props.cardsFilterRace,
+    props.cardsFilterAttribute,
+    props.cardsFilterLevelRank,
+    props.cardsFilterLevelRankCompare,
+    props.cardsFilterLink,
+    props.cardsFilterAtk,
+    props.cardsFilterAtkCompare,
+    props.cardsFilterDef,
+    props.cardsFilterDefCompare,
+    props.cardsFilterSort,
+  ]);
   return (
     <Paper className={classes.cardsListWrapperStyles}>
       <Paper className={classes.headerStyles} square variant='outlined'>
-        Cards List
+        Cards Library
       </Paper>
       <Paper className={classes.cardsWrapperStyles}>
         <InfiniteScroll
           dataLength={cardsList.length}
           next={moreCardsFetching}
           loader={<Loader />}
-          hasMore={dataStatus.rows_ramaining !== 0 ? true : false}
+          hasMore={dataStatus.rows_remaining !== 0 ? true : false}
           height='calc(100vh - 145px)'
+          style={{ alignContent: 'flex-start' }}
           className={classes.infiniteScroll}
         >
           {cardsList.map((cardsInfo) => (
-            <Grid item container justify='center' xs={3} key={cardsInfo.id}>
-              <Card className={classes.cardWrapperStyles}>
-                <CardMedia
-                  image={cardsInfo.card_images[0].image_url_small}
-                  className={classes.cardStyles}
-                  onMouseEnter={() => setTimeout(() => props.setCardTarget(cardsInfo), 0)}
-                />
-              </Card>
-            </Grid>
+            cardsInfo.card_images.map((cardImages, index) => (
+              <Grid item container justify='center' xs={3} key={cardImages.id}>
+                <Card className={classes.cardWrapperStyles}>
+                  <CardMedia
+                    image={cardImages.image_url_small}
+                    className={classes.cardStyles}
+                    onMouseEnter={() => {
+                      props.setCardTarget(cardsInfo);
+                      props.setCardTargetVersion(index);
+                    }}
+                  >
+                    {(cardsInfo.banlist_info && cardsInfo.banlist_info.ban_tcg) ?
+                      <img
+                        src={banListSignConverter(cardsInfo.banlist_info.ban_tcg)}
+                        alt="banlist sign"
+                        className={classes.banListStyles} />
+                      : ""}
+                  </CardMedia>
+                </Card>
+              </Grid>
+            ))
           ))}
         </InfiniteScroll>
       </Paper>

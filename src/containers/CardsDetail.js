@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
   imageWrapperStyles: {
     width: '100%',
-    height: '320px',
+    height: '340px',
     backgroundColor: 'transparent',
     display: 'flex',
     flexDirection: 'column',
@@ -32,14 +32,13 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   imageStyles: {
-    width: "220px",
-    height: "320px",
+    width: "234px",
+    height: "340px",
   },
   cardDetailStyles: {
     display: 'flex',
     flexDirection: 'column',
     width: '96%',
-    
     minHeight: '100px',
     backgroundColor: 'rgba(0,0,0,0.6)',
     color: "#f0f0f0",
@@ -49,11 +48,57 @@ const useStyles = makeStyles({
   cardEffectStyles: {
     margin: '8px',
     whiteSpace: 'pre-line',
+  },
+  cardDetailContentStyles: {
+    wordBreak: 'break-word',
+    wordWrap: 'break-word',
   }
 });
 
-const CardsDetail = ({ cardTarget }) => {
+const CardsDetail = ({ cardTarget, cardTargetVersion }) => {
   const classes = useStyles();
+  const levelRankConverter = (levelRank) => {
+    let temp = '[';
+    for (let i = 0; i < levelRank; i++) {
+      temp += '★';
+    }
+    temp += ']'
+    return temp;
+  }
+  const linkConverter = (linkmarkers) => {
+    let temp = '';
+    linkmarkers.forEach((direction) => {
+      switch (direction) {
+        case 'Left':
+          temp += '←';
+          break;
+        case 'Bottom-Left':
+          temp += '↙';
+          break;
+        case 'Bottom':
+          temp += '↓';
+          break;
+        case 'Bottom-Right':
+          temp += '↘';
+          break;
+        case 'Right':
+          temp += '→';
+          break;
+        case 'Top-Right':
+          temp += '↗';
+          break;
+        case 'Top':
+          temp += '↑';
+          break;
+        case 'Top-Left':
+          temp += '↖';
+          break;
+        default:
+          break;
+      }
+    });
+    return temp;
+  }
   return (
     <>
       <Paper className={classes.cardDetailWrapperStyles}>
@@ -62,17 +107,32 @@ const CardsDetail = ({ cardTarget }) => {
         </Paper>
         <Card className={classes.imageWrapperStyles}>
           <CardMedia
-            image={cardTarget ? cardTarget.card_images[0].image_url : CardsBackside}
+            image={cardTarget ? cardTarget.card_images[cardTargetVersion].image_url : CardsBackside}
             className={classes.imageStyles}
           />
         </Card>
         <Paper className={classes.cardDetailStyles} square variant='outlined'>
-          <Typography variant='caption' style={{ alignSelf: 'center' }}>{cardTarget ? cardTarget.id : ""}</Typography>
-          <Typography variant='body2' style={{ margin: '8px' }}>
-            {cardTarget ? `[${cardTarget.type}] ${cardTarget.race}/${cardTarget.attribute || cardTarget.archetype || "???"}` : ""}
+          <Typography variant='caption' style={{ alignSelf: 'center' }}>{cardTarget ? cardTarget.card_images[cardTargetVersion].id : ""}</Typography>
+          <Typography variant='body2' className={classes.cardDetailContentStyles} style={{ margin: '8px 8px 0 8px' }}>
+            {cardTarget ?
+              `[${cardTarget.type}] ${cardTarget.race}/${cardTarget.attribute || cardTarget.archetype || "???"}`
+              : ""}
+          </Typography>
+          <Typography variant='body2' className={classes.cardDetailContentStyles} style={{ margin: '0 8px 8px 8px' }}>
+            {cardTarget ?
+              `${cardTarget.level ?
+                `${levelRankConverter(cardTarget.level)} ${cardTarget.atk}/${cardTarget.def}${cardTarget.scale ?
+                  `/SCALE-${cardTarget.scale}`
+                  : ""}`
+                : `${cardTarget.linkval ?
+                  `[${linkConverter(cardTarget.linkmarkers)}] ${cardTarget.atk}/LINK-${cardTarget.linkval}` :
+                  ""}`}`
+              : ""}
           </Typography>
           <Typography variant='body2' className={classes.cardEffectStyles}>
-            {cardTarget ? `${cardTarget.desc}` : ""}
+            {cardTarget ?
+              `${cardTarget.desc}`
+              : ""}
           </Typography>
         </Paper>
       </Paper>
