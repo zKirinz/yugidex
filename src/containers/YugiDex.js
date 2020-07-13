@@ -53,7 +53,7 @@ const useStyles = makeStyles({
     marginLeft: '16px',
     minWidth: '320px',
   }
-})
+});
 
 const YugiDex = (props) => {
   const [cardTarget, setCardTarget] = useState(0);

@@ -81,21 +81,21 @@ const CardsList = (props) => {
     } catch (ex) {
       console.log('Fetch cards error!');
     }
-  }
+  };
   const Loader = () => {
     return (
       <Paper className={classes.loaderStyles}>
         <CircularProgress size="60px" thickness={5} className={classes.circularProgress} />
       </Paper>
     )
-  }
+  };
   const banListSignConverter = (ban_tcg) => {
     if (ban_tcg === "Banned")
       return banSign;
     else if (ban_tcg === "Limited")
       return limitedSign;
     else return semilimitedSign;
-  }
+  };
   useEffect(() => {
     const apiRequestConverter = () => {
       let temp = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?';
@@ -120,7 +120,7 @@ const CardsList = (props) => {
       temp += `&num=${length}&offset=0`;
       console.log(temp);
       return temp;
-    }
+    };
     const cardsFetching = async () => {
       try {
         const response = await get(apiRequestConverter());
@@ -130,7 +130,7 @@ const CardsList = (props) => {
         setCardsList([]);
         setDataStatus({ rows_remaining: 0 });
       }
-    }
+    };
     cardsFetching();
   }, [
     props.cardsFilterName,

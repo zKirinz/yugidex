@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CardsBackside from '../assets/images/CardsBackside.png';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   cardDetailWrapperStyles: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles({
   imageStyles: {
     width: "234px",
     height: "340px",
+    cursor: "pointer"
   },
   cardDetailStyles: {
     display: 'flex',
@@ -56,6 +58,7 @@ const useStyles = makeStyles({
 });
 
 const CardsDetail = ({ cardTarget, cardTargetVersion }) => {
+  const history = useHistory();
   const classes = useStyles();
   const levelRankConverter = (levelRank) => {
     let temp = '[';
@@ -109,6 +112,7 @@ const CardsDetail = ({ cardTarget, cardTargetVersion }) => {
           <CardMedia
             image={cardTarget ? cardTarget.card_images[cardTargetVersion].image_url : CardsBackside}
             className={classes.imageStyles}
+            onClick={() => history.push(`${cardTarget.card_images[cardTargetVersion].id}`)}
           />
         </Card>
         <Paper className={classes.cardDetailStyles} square variant='outlined'>

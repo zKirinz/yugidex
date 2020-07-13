@@ -3,9 +3,18 @@ import ReactDOM from 'react-dom';
 import App from './containers/App';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import '@fortawesome/fontawesome-free/css/all.css';
 
+const history = createBrowserHistory();
 ReactDOM.render(
-    <App />,
+  <React.StrictMode>
+    <Router history={history}>
+      <App />
+    </Router>
+  </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 

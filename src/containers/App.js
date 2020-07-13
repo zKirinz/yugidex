@@ -1,16 +1,25 @@
 import React from 'react';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import YugiDex from './YugiDex';
+import CardsMoreDetail from './CardsMoreDetail';
+import {
+  Switch,
+  Route
+} from 'react-router-dom';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  }
+})
 
 const App = (props) => {
-  const theme = createMuiTheme({
-    palette: {
-      type: 'dark',
-    }
-  })
   return (
     <ThemeProvider theme={theme}>
-      <YugiDex />
+      <Switch>
+        <Route exact path="/" render={props => <YugiDex {...props} />} />
+        <Route exact path="/:cardID" render={props => <CardsMoreDetail {...props} />} />
+      </Switch>
     </ThemeProvider>
   );
 }
