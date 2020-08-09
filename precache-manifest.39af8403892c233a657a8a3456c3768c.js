@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0e9c70c7f02f24d1c5078b93efb92592",
+    "revision": "7afc5715b6ccb6dcb12491ea6fe49972",
     "url": "/YugiDex/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/YugiDex/static/css/2.a2164bd2.chunk.css"
   },
   {
-    "revision": "9a3b5fec18fdaf88c7fc",
+    "revision": "6691092975c68047921f",
     "url": "/YugiDex/static/css/main.7dc50faa.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/YugiDex/static/js/2.005e3110.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9a3b5fec18fdaf88c7fc",
-    "url": "/YugiDex/static/js/main.349d478f.chunk.js"
+    "revision": "6691092975c68047921f",
+    "url": "/YugiDex/static/js/main.afa2fa9f.chunk.js"
   },
   {
     "revision": "1e7b718aa556b94db88e",
