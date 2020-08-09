@@ -118,7 +118,6 @@ const CardsList = (props) => {
       if (props.cardsFilterSort !== "")
         temp += '&sort=' + props.cardsFilterSort;
       temp += `&num=${length}&offset=0`;
-      console.log(temp);
       return temp;
     };
     const cardsFetching = async () => {

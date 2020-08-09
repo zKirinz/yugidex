@@ -17,8 +17,8 @@ const App = (props) => {
   return (
     <ThemeProvider theme={theme}>
       <Switch>
-        <Route exact path="/" render={props => <YugiDex {...props} />} />
-        <Route exact path="/:cardID" render={props => <CardsMoreDetail {...props} />} />
+        <Route exact path={process.env.PUBLIC_URL + '/'} render={props => <YugiDex {...props} />} />
+        <Route exact path={process.env.PUBLIC_URL + '/:cardID'} render={props => <CardsMoreDetail {...props} />} />
       </Switch>
     </ThemeProvider>
   );
