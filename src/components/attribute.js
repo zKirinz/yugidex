@@ -1,4 +1,3 @@
-import React from 'react';
 import SpellContinuous from '../assets/images/SpellContinuous.png';
 import SpellEquip from '../assets/images/SpellEquip.png';
 import SpellField from '../assets/images/SpellField.png';
@@ -16,50 +15,50 @@ import MonsterLIGHT from '../assets/images/MonsterLIGHT.png';
 import MonsterWATER from '../assets/images/MonsterWATER.png';
 import MonsterWIND from '../assets/images/MonsterWIND.png';
 
-const attribute = card => {
-  if (card.type === "Spell Card") {
+const attribute = (card) => {
+  if (card.type === 'Spell Card') {
     switch (card.race) {
-      case "Normal":
+      case 'Normal':
         return SpellNormal;
-      case "Field":
+      case 'Field':
         return SpellField;
-      case "Equip":
+      case 'Equip':
         return SpellEquip;
-      case "Continuous":
+      case 'Continuous':
         return SpellContinuous;
-      case "Quick-Play":
+      case 'Quick-Play':
         return SpellQuickPlay;
-      case "Ritual":
+      case 'Ritual':
         return SpellRitual;
     }
-  } else if (card.type === "Trap Card") {
+  } else if (card.type === 'Trap Card') {
     switch (card.race) {
-      case "Normal":
+      case 'Normal':
         return TrapNormal;
-      case "Continuous":
+      case 'Continuous':
         return TrapContinuous;
-      case "Counter":
+      case 'Counter':
         return TrapCounter;
     }
-  } else if (card.type === "Skill Card") {
+  } else if (card.type === 'Skill Card') {
     return undefined;
   } else {
     switch (card.attribute) {
-      case "DARK":
+      case 'DARK':
         return MonsterDARK;
-      case "DIVINE":
+      case 'DIVINE':
         return MonsterDIVINE;
-      case "EARTH":
+      case 'EARTH':
         return MonsterEARTH;
-      case "FIRE":
+      case 'FIRE':
         return MonsterFIRE;
-      case "LIGHT":
+      case 'LIGHT':
         return MonsterLIGHT;
-      case "WATER":
+      case 'WATER':
         return MonsterWATER;
-      case "WIND":
+      case 'WIND':
         return MonsterWIND;
     }
   }
-}
+};
 export default attribute;
