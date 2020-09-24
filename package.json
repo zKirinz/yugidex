@@ -1,5 +1,5 @@
 {
-  "homepage": "http://kien123456k.github.io/YugiDex",
+  "homepage": "../",
   "name": "yugidex",
   "version": "0.1.0",
   "private": true,
@@ -28,7 +28,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "node server.js",
+    "start": "react-scripts start",
     "start:watch": "nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
