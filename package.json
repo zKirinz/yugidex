@@ -28,6 +28,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "clean": "gh-pages-clean",
     "start": "react-scripts start",
     "start:watch": "nodemon server.js",
     "build": "react-scripts build",
