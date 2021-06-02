@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/yugidex/static/css/main.aa843bb9.chunk.css",
-    "main.js": "/yugidex/static/js/main.64cf8805.chunk.js",
-    "main.js.map": "/yugidex/static/js/main.64cf8805.chunk.js.map",
-    "runtime-main.js": "/yugidex/static/js/runtime-main.e6f308bb.js",
-    "runtime-main.js.map": "/yugidex/static/js/runtime-main.e6f308bb.js.map",
-    "static/css/2.c51d76d8.chunk.css": "/yugidex/static/css/2.c51d76d8.chunk.css",
-    "static/js/2.d1f369f6.chunk.js": "/yugidex/static/js/2.d1f369f6.chunk.js",
-    "static/js/2.d1f369f6.chunk.js.map": "/yugidex/static/js/2.d1f369f6.chunk.js.map",
+    "main.js": "/yugidex/static/js/main.17fefb83.chunk.js",
+    "main.js.map": "/yugidex/static/js/main.17fefb83.chunk.js.map",
+    "runtime-main.js": "/yugidex/static/js/runtime-main.e796d43c.js",
+    "runtime-main.js.map": "/yugidex/static/js/runtime-main.e796d43c.js.map",
+    "static/css/2.7360f34e.chunk.css": "/yugidex/static/css/2.7360f34e.chunk.css",
+    "static/js/2.b9a7fa2d.chunk.js": "/yugidex/static/js/2.b9a7fa2d.chunk.js",
+    "static/js/2.b9a7fa2d.chunk.js.map": "/yugidex/static/js/2.b9a7fa2d.chunk.js.map",
     "index.html": "/yugidex/index.html",
-    "precache-manifest.5af9f8948427e8d0c81237f6a1157c47.js": "/yugidex/precache-manifest.5af9f8948427e8d0c81237f6a1157c47.js",
+    "precache-manifest.27df782d846ae1b39cc8d56f6943ef07.js": "/yugidex/precache-manifest.27df782d846ae1b39cc8d56f6943ef07.js",
     "service-worker.js": "/yugidex/service-worker.js",
-    "static/css/2.c51d76d8.chunk.css.map": "/yugidex/static/css/2.c51d76d8.chunk.css.map",
+    "static/css/2.7360f34e.chunk.css.map": "/yugidex/static/css/2.7360f34e.chunk.css.map",
     "static/css/main.aa843bb9.chunk.css.map": "/yugidex/static/css/main.aa843bb9.chunk.css.map",
-    "static/js/2.d1f369f6.chunk.js.LICENSE.txt": "/yugidex/static/js/2.d1f369f6.chunk.js.LICENSE.txt",
+    "static/js/2.b9a7fa2d.chunk.js.LICENSE.txt": "/yugidex/static/js/2.b9a7fa2d.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/yugidex/static/media/Background.11c92e0a.jpg",
     "static/media/CardsBackside.png": "/yugidex/static/media/CardsBackside.37816f9a.png",
     "static/media/LevelIcon.svg.png": "/yugidex/static/media/LevelIcon.svg.67c3b7f1.png",
@@ -35,13 +35,13 @@
     "static/media/TrapContinuous.png": "/yugidex/static/media/TrapContinuous.a926716b.png",
     "static/media/TrapCounter.png": "/yugidex/static/media/TrapCounter.e7be806f.png",
     "static/media/TrapNormal.png": "/yugidex/static/media/TrapNormal.ca579d9b.png",
-    "static/media/all.css": "/yugidex/static/media/fa-solid-900.ee09ad75.woff"
+    "static/media/all.css": "/yugidex/static/media/fa-solid-900.f3a7d3b5.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.e6f308bb.js",
-    "static/css/2.c51d76d8.chunk.css",
-    "static/js/2.d1f369f6.chunk.js",
+    "static/js/runtime-main.e796d43c.js",
+    "static/css/2.7360f34e.chunk.css",
+    "static/js/2.b9a7fa2d.chunk.js",
     "static/css/main.aa843bb9.chunk.css",
-    "static/js/main.64cf8805.chunk.js"
+    "static/js/main.17fefb83.chunk.js"
   ]
 }
