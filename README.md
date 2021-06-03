@@ -80,5 +80,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 # License & copyright
 
-© Trần Trung Kiên, FPT University TP.HCM
+© Kirin Tran, FPT University TP.HCM
 Licensed under the [MIT LICENSE](LICENSE).
