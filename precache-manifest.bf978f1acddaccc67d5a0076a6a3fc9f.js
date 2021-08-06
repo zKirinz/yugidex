@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5f7b69ef2ff7147982721cf85085863d",
+    "revision": "e4ad164e21316f7b2a88f41188011220",
     "url": "/yugidex/index.html"
   },
   {
